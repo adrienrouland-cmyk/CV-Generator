@@ -12,6 +12,8 @@ const initialPersonalInfo = {
   lastName: '',
   email: '',
   phone: '',
+  jobTitle: '',
+  location: '',
 }
 
 function App() {

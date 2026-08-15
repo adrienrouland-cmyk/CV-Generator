@@ -18,6 +18,14 @@ export function PersonalInfoForm({personalInfo, onChange})
                 <label htmlFor="phone">Téléphone</label>
                 <input id="phone" type="tel" name="phone" value={personalInfo.phone} onChange={onChange} placeholder="06 12 34 56 78" autoComplete="tel"/>
             </div>
+            <div className="form-field form-field-full">
+                <label htmlFor="jobTitle">Poste recherché</label>
+                <input id="jobTitle" type="text" name="jobTitle" value={personalInfo.jobTitle} onChange={onChange} placeholder="Product Manager"/>
+            </div>
+            <div className="form-field form-field-full">
+                <label htmlFor="location">Localisation</label>
+                <input id="location" type="text" name="location" value={personalInfo.location} onChange={onChange} placeholder="Paris, France" autoComplete="address-level2"/>
+            </div>
         </div>
     );
 }
