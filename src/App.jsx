@@ -10,6 +10,8 @@ const steps = ["Profil", "Formation", "Experience", "Finalisation"];
 const initialPersonalInfo = {
   firstName: '',
   lastName: '',
+  email: '',
+  phone: '',
 }
 
 function App() {
