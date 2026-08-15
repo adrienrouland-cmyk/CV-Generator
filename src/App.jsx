@@ -20,6 +20,12 @@ const initialPersonalInfo = {
 function App() {
   const [currentStep, setCurrentStep] = useState(0);
   const [personalInfo, setPersonalInfo] = useState(initialPersonalInfo);
+  const [completedSteps, setCompletedSteps] = useState({
+    Profil:false,
+    Formation:false,
+    Experience:false,
+    Finalisation:false,
+  })
 
   function handlePersonalInfoChange(event) {
     const {name, value} = event.target;
@@ -32,6 +38,11 @@ function App() {
 
   function handleProfileSubmit(event) {
     event.preventDefault();
+
+    setCompletedSteps((previousSteps) => ({
+      ...previousSteps, Profil:true,
+    }))
+
     setCurrentStep(1);
   }
 
@@ -43,7 +54,7 @@ function App() {
         <p>Complétez chaque étape pour construire votre CV.</p>
       </header>
 
-      <Stepper steps={steps} currentStep={currentStep} onStepChange={setCurrentStep}/>
+      <Stepper steps={steps} currentStep={currentStep} completedSteps={completedSteps} onStepChange={setCurrentStep}/>
       
       <section className="step-content">
         <p className="eyebrow">Etape {currentStep + 1}</p>

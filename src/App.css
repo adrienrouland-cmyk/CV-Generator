@@ -49,8 +49,8 @@
 .stepper-item:not(:last-child)::after {
   position:absolute;
   top: 20px;
-  right: -50%;
-  left: 50%;
+  right: calc(-50% + 21px);
+  left: calc(50% + 21px);
   height: 2px;
   background: var(--border);
   content: "";
@@ -99,10 +99,6 @@
   border-color: var(--primary);
   color: white;
   background: var(--primary);
-}
-
-.stepper-button:hover .step-number {
-  border-color:var(--primary);
 }
 
 .stepper-button:focus-visible {
@@ -235,6 +231,25 @@
 .primary-button:focus-visible {
   outline: 3px solid rgb(82 107 78 / 20%);
   outline-offset: 3px;
+}
+
+.stepper-item-completed:not(:last-child)::after {
+  background: var(--primary);
+}
+
+.stepper-item-completed .step-number {
+  border-color: var(--primary);
+  color: white;
+  background: var(--primary);
+}
+
+.stepper-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.stepper-button:not(:disabled):hover .step-number {
+  border-color: var(--primary);
 }
 
 @media (max-width: 600px) {
