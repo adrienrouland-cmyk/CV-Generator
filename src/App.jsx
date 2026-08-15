@@ -21,6 +21,8 @@ const initialPersonalInfo = {
 const initialEducation = {
   school: '',
   degree: '',
+  startDate: '',
+  endDate: '',
 };
 
 function App() {
@@ -61,6 +63,16 @@ function App() {
     }))
   }
 
+  function handleEducationSubmit(event) {
+    event.preventDefault();
+
+    setCompletedSteps((previousSteps) => ({
+      ...previousSteps, Formation:true,
+    }));
+
+    setCurrentStep(2);
+  }
+
   return (
     <main className="app">
       <header className='page-header'>
@@ -80,7 +92,7 @@ function App() {
         ) : null}
 
         {currentStep === 1 ? (
-          <EducationForm education={education} onChange={handleEducationChange}/>
+          <EducationForm education={education} onChange={handleEducationChange} onSubmit={handleEducationSubmit}/>
         ) : null}
 
         {currentStep > 1 && (
