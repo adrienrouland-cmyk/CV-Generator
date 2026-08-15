@@ -2,13 +2,13 @@ export function PersonalInfoForm({personalInfo, onChange})
 {
     return (
         <div className="profile-form">
-            <label>Prénom
-                <input type="text" name="firstName" value={personalInfo.firstName} onChange={onChange} placeholder="Adrien" />
-            </label>
+            <div className="form-field">
+                <label htmlFor="firstName">Prénom</label>
+                <input id="firstName" type="text" name="firstName" value={personalInfo.firstName} onChange={onChange} placeholder="Adrien" autoComplete="given-name"/>
 
-            <label> Nom
-                <input type="text" name="lastName" value={personalInfo.lastName} onChange={onChange} placeholder="Devienne" />
-            </label>
+                <label htmlFor="lastName">Nom</label>
+                <input id="lastName" type="text" name="lastName" value={personalInfo.lastName} onChange={onChange} placeholder="Devienne" autoComplete="family-name"/>
+            </div>
         </div>
     );
 }
