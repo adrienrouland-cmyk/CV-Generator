@@ -1,7 +1,7 @@
-export function PersonalInfoForm({personalInfo, onChange})
+export function PersonalInfoForm({personalInfo, onChange, onSubmit})
 {
     return (
-        <div className="profile-form">
+        <form className="profile-form" onSubmit={onSubmit}>
             <div className="form-field">
                 <label htmlFor="firstName">Prénom</label>
                 <input id="firstName" type="text" name="firstName" value={personalInfo.firstName} onChange={onChange} placeholder="Adrien" autoComplete="given-name"/>
@@ -30,6 +30,13 @@ export function PersonalInfoForm({personalInfo, onChange})
                 <label htmlFor="summary">Résumé profesionnel</label>
                 <textarea id="summary" name="summary" value={personalInfo.summary} onChange={onChange} placeholder="Présentez brièvement votre parcours, vos compétences et vos objectifs" rows="5" maxLength="400"/>
             </div>
-        </div>
+
+            <div className="form-actions form-field-full">
+                <button className="primary-button" type="submit">
+                    Enregistrer et continuer
+                    <span aria-hidden="true">→</span>
+                </button>
+            </div>
+        </form>
     );
 }

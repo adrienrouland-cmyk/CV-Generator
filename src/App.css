@@ -203,6 +203,40 @@
   box-shadow: 0 0 0 4px rgb(82 107 78 / 12%);
 }
 
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
+
+.primary-button {
+  display: inline-flex;
+  min-height: 46px;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  border: 0;
+  border-radius: 10px;
+  padding: 0 20px;
+  color: white;
+  background: var(--primary);
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background-color 150ms ease,
+    transform 150ms ease;
+}
+
+.primary-button:hover {
+  background : var(--primary-dark);
+  transform: translateY(-1px);
+}
+
+.primary-button:focus-visible {
+  outline: 3px solid rgb(82 107 78 / 20%);
+  outline-offset: 3px;
+}
+
 @media (max-width: 600px) {
   .app {
     padding: 40px 0;

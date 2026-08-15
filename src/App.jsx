@@ -30,6 +30,11 @@ function App() {
     }))
   }
 
+  function handleProfileSubmit(event) {
+    event.preventDefault();
+    setCurrentStep(1);
+  }
+
   return (
     <main className="app">
       <header className='page-header'>
@@ -45,7 +50,7 @@ function App() {
         <h2>{steps[currentStep]}</h2>
 
         {currentStep === 0 ? (
-          <PersonalInfoForm personalInfo={personalInfo} onChange={handlePersonalInfoChange} />
+          <PersonalInfoForm personalInfo={personalInfo} onChange={handlePersonalInfoChange} onSubmit={handleProfileSubmit}/>
         ) : ( <p>Contenu de l'étape {currentStep + 1}</p> )}
 
       </section>
