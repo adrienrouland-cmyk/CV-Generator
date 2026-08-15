@@ -26,6 +26,10 @@ export function PersonalInfoForm({personalInfo, onChange})
                 <label htmlFor="location">Localisation</label>
                 <input id="location" type="text" name="location" value={personalInfo.location} onChange={onChange} placeholder="Paris, France" autoComplete="address-level2"/>
             </div>
+            <div className="form-field form-field-full">
+                <label htmlFor="summary">Résumé profesionnel</label>
+                <textarea id="summary" name="summary" value={personalInfo.summary} onChange={onChange} placeholder="Présentez brièvement votre parcours, vos compétences et vos objectifs" rows="5" maxLength="400"/>
+            </div>
         </div>
     );
 }

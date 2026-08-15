@@ -14,6 +14,7 @@ const initialPersonalInfo = {
   phone: '',
   jobTitle: '',
   location: '',
+  summary: '',
 }
 
 function App() {
