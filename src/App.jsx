@@ -18,12 +18,15 @@ const initialPersonalInfo = {
   summary: '',
 }
 
-const initialEducation = {
-  school: '',
-  degree: '',
-  startDate: '',
-  endDate: '',
-};
+function createEmptyEducation() {
+  return {
+    id: crypto.randomUUID(),
+    school: '',
+    degree: '',
+    startDate: '',
+    endDate: '',
+  };
+}
 
 function App() {
   const [currentStep, setCurrentStep] = useState(0);
@@ -34,7 +37,7 @@ function App() {
     Experience:false,
     Finalisation:false,
   });
-  const [education, setEducation] = useState(initialEducation);
+  const [educations, setEducations] = useState(() => [createEmptyEducation(),]);
 
   function handlePersonalInfoChange(event) {
     const {name, value} = event.target;
@@ -55,13 +58,20 @@ function App() {
     setCurrentStep(1);
   }
 
-  function handleEducationChange(event) {
+  function handleEducationChange(educationId, event) {
     const {name, value} = event.target;
 
-    setEducation((previousEducation) => ({
-      ...previousEducation, [name]:value,
-    }))
-  }
+    setEducations((previousEducations) => previousEducations.map((education) => 
+      education.id === educationId ? {
+        ...education, [name]:value,
+      } : education,),
+    )}
+
+    function handleAddEducation() {
+      setEducations((previousEducations) => [
+        ...previousEducations, createEmptyEducation(),
+      ])
+    }
 
   function handleEducationSubmit(event) {
     event.preventDefault();
@@ -92,7 +102,7 @@ function App() {
         ) : null}
 
         {currentStep === 1 ? (
-          <EducationForm education={education} onChange={handleEducationChange} onSubmit={handleEducationSubmit}/>
+          <EducationForm educations={educations} onChange={handleEducationChange} onAdd={handleAddEducation} onSubmit={handleEducationSubmit}/>
         ) : null}
 
         {currentStep > 1 && (
