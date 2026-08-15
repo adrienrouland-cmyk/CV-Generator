@@ -3,12 +3,27 @@ import { Header } from './components/Header'
 import { Stepper } from './components/Stepper'
 import { EditorPanel } from './components/EditorPanel'
 import { CVPreview } from './components/CVPreview'
+import { PersonalInfoForm } from './components/PersonalInfoForm'
 import './App.css'
 
 const steps = ["Profil", "Formation", "Experience", "Finalisation"];
+const initialPersonalInfo = {
+  firstName: '',
+  lastName: '',
+}
 
 function App() {
   const [currentStep, setCurrentStep] = useState(0);
+  const [personalInfo, setPersonalInfo] = useState(initialPersonalInfo);
+
+  function handlePersonalInfoChange(event) {
+    const {name, value} = event.target;
+
+    setPersonalInfo((previousInfo) => ({
+      ...previousInfo, 
+      [name]: value,
+    }))
+  }
 
   return (
     <main className="app">
@@ -23,7 +38,11 @@ function App() {
       <section className="step-content">
         <p className="eyebrow">Etape {currentStep + 1}</p>
         <h2>{steps[currentStep]}</h2>
-        <p>Contenu de l'étape {currentStep + 1}</p>
+
+        {currentStep === 0 ? (
+          <PersonalInfoForm personalInfo={personalInfo} onChange={handlePersonalInfoChange} />
+        ) : ( <p>Contenu de l'étape {currentStep + 1}</p> )}
+
       </section>
     </main>
   );
