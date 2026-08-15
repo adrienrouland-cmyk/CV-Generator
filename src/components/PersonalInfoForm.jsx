@@ -1,7 +1,7 @@
 export function PersonalInfoForm({personalInfo, onChange, onSubmit})
 {
     return (
-        <form className="profile-form" onSubmit={onSubmit}>
+        <form className="form-grid" onSubmit={onSubmit}>
             <div className="form-field">
                 <label htmlFor="firstName">Prénom</label>
                 <input id="firstName" type="text" name="firstName" value={personalInfo.firstName} onChange={onChange} placeholder="Adrien" autoComplete="given-name"/>

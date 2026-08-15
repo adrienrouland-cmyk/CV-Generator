@@ -126,7 +126,7 @@
   color: var(--muted);
 }
 
-.profile-form {
+.form-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 20px;
@@ -269,7 +269,7 @@
     padding: 28px 22px;
   }
 
-  .profile-form {
+  .form-grid {
     grid-template-columns: 1fr;
   }
 }
