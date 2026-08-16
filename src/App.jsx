@@ -5,6 +5,7 @@ import { EditorPanel } from './components/EditorPanel'
 import { CVPreview } from './components/CVPreview'
 import { PersonalInfoForm } from './components/PersonalInfoForm'
 import { EducationForm } from './components/EducationForm'
+import { ExperienceForm } from './components/ExperienceForm'
 import './App.css'
 
 const steps = ["Profil", "Formation", "Experience", "Finalisation"];
@@ -28,6 +29,14 @@ function createEmptyEducation() {
   };
 }
 
+function createEmptyExperience() {
+  return {
+    id: crypto.randomUUID(),
+    company: '',
+    job: '',
+  };
+}
+
 function App() {
   const [currentStep, setCurrentStep] = useState(0);
   const [personalInfo, setPersonalInfo] = useState(initialPersonalInfo);
@@ -38,6 +47,7 @@ function App() {
     Finalisation:false,
   });
   const [educations, setEducations] = useState(() => [createEmptyEducation(),]);
+  const [experiences, setExperiences] = useState(() => [createEmptyExperience(), ]);
 
   function handlePersonalInfoChange(event) {
     const {name, value} = event.target;
@@ -89,6 +99,29 @@ function App() {
     ),
     )}
 
+  function handleExperienceChange(experienceId, event) {
+    const {name, value} = event.target;
+
+    setExperiences((previousExperiences) => previousExperiences.map((experience) =>
+      experience.id === experienceId ? {...experience, [name]: value} : experience));
+  }
+
+  function handleAddExperience() {
+    setExperiences([...experiences, createEmptyExperience()]);
+  }
+
+  function handleDeleteExperience(experienceId) {
+    setExperiences((previousExperiences) => previousExperiences.filter((experience) => experience.id !== experienceId));
+  }
+
+  function handleExperienceSubmit(event){
+    event.preventDefault();
+
+    setCompletedSteps((previousSteps) => ({...previousSteps, Experience:true}));
+
+    setCurrentStep(3);
+  }
+
   return (
     <main className="app">
       <header className='page-header'>
@@ -111,7 +144,11 @@ function App() {
           <EducationForm educations={educations} onChange={handleEducationChange} onAdd={handleAddEducation} onDelete={handleDeleteEducation} onSubmit={handleEducationSubmit}/>
         ) : null}
 
-        {currentStep > 1 && (
+        {currentStep === 2 ? (
+          <ExperienceForm experiences={experiences} onChange={handleExperienceChange} onAdd={handleAddExperience} onDelete={handleDeleteExperience} onSubmit={handleExperienceSubmit}/>
+        ) : null}
+
+        {currentStep > 2 && (
           <p>Contenu de l'étape {currentStep + 1}</p>
         )}
 
