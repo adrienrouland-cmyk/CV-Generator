@@ -6,6 +6,7 @@ import { CVPreview } from './components/CVPreview'
 import { PersonalInfoForm } from './components/PersonalInfoForm'
 import { EducationForm } from './components/EducationForm'
 import { ExperienceForm } from './components/ExperienceForm'
+import { FinalReview } from './components/FinalReview'
 import './App.css'
 
 const steps = ["Profil", "Formation", "Experience", "Finalisation"];
@@ -125,6 +126,12 @@ function App() {
     setCurrentStep(3);
   }
 
+  function handleFinalize() {
+    setCompletedSteps((previousSteps) => ({
+      ...previousSteps, Finalisation:true,
+    }))
+  }
+
   return (
     <main className="app">
       <header className='page-header'>
@@ -151,9 +158,9 @@ function App() {
           <ExperienceForm experiences={experiences} onChange={handleExperienceChange} onAdd={handleAddExperience} onDelete={handleDeleteExperience} onSubmit={handleExperienceSubmit}/>
         ) : null}
 
-        {currentStep > 2 && (
-          <p>Contenu de l'étape {currentStep + 1}</p>
-        )}
+        {currentStep === 3 ? (
+          <FinalReview personalInfo={personalInfo} educations={educations} experiences={experiences} isFinalized={completedSteps.Finalisation} onEdit={setCurrentStep} onFinalize={handleFinalize}/>
+        ) : null}
 
       </section>
     </main>
