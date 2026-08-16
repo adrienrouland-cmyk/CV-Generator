@@ -1,0 +1,79 @@
+@page {
+  size: A4 portrait;
+  margin: 0;
+}
+
+@media print {
+  html,
+  body,
+  #root {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0;
+    padding: 0;
+    background: white;
+  }
+
+  .page-header,
+  .stepper,
+  .step-content > .eyebrow,
+  .step-content > h2,
+  .final-review,
+  .cv-preview-label {
+    display: none !important;
+  }
+
+  .app {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0;
+    padding: 0;
+  }
+
+  .step-content {
+    width: 210mm;
+    min-height: 0;
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+    padding: 0;
+    background: white;
+    box-shadow: none;
+  }
+
+  .finalization-layout {
+    display: block;
+    width: 210mm;
+    margin: 0;
+  }
+
+  .cv-preview-panel {
+    position: static;
+    width: 210mm;
+    margin: 0;
+  }
+
+  .cv-page {
+    width: 210mm;
+    min-height: 297mm;
+    aspect-ratio: auto;
+    margin: 0;
+    padding: 16mm;
+    overflow: visible;
+    background: white;
+    box-shadow: none;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .cv-section,
+  .cv-entry {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .cv-contact a {
+    color: inherit;
+    text-decoration: none;
+  }
+}

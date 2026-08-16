@@ -11,7 +11,7 @@ function displayPeriod(startDate, endDate)
     return `${start} - ${end}`;
 }
 
-export function FinalReview({personalInfo, educations, experiences, isFinalized, onEdit, onFinalize})
+export function FinalReview({personalInfo, educations, experiences, isFinalized, onEdit, onFinalize, onPrint})
 {
     return (
         <div className="final-review">
@@ -119,13 +119,14 @@ export function FinalReview({personalInfo, educations, experiences, isFinalized,
             </section>
 
             <div className="final-review-actions">
-                {isFinalized && (
-                    <p className="finalized-message">✓ Votre CV est prêt.</p>
+                {isFinalized ? (
+                    <>
+                        <p className="finalized-message">✓ Votre CV est prêt.</p>
+                        <button className="primary-button" type="button" onClick={onPrint}>Télécharger en PDF</button>
+                    </>
+                ) : (
+                    <button className="primary-button" type="button" onClick={onFinalize}>Finaliser mon CV</button>
                 )}
-
-                <button className="primary-button" type="button" onClick={onFinalize} disabled={isFinalized}>
-                    {isFinalized ? "CV finalisé" : "Finaliser mon CV"}
-                </button>
             </div>
 
         </div>

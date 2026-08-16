@@ -8,6 +8,7 @@ import { EducationForm } from './components/EducationForm'
 import { ExperienceForm } from './components/ExperienceForm'
 import { FinalReview } from './components/FinalReview'
 import './App.css'
+import "./styles/print.css"
 
 const steps = ["Profil", "Formation", "Experience", "Finalisation"];
 const initialPersonalInfo = {
@@ -132,6 +133,10 @@ function App() {
     }))
   }
 
+  function handlePrint() {
+    window.print();
+  }
+
   return (
     <main className="app">
       <header className='page-header'>
@@ -160,7 +165,7 @@ function App() {
 
         {currentStep === 3 ? (
           <div className='finalization-layout'>
-            <FinalReview personalInfo={personalInfo} educations={educations} experiences={experiences} isFinalized={completedSteps.Finalisation} onEdit={setCurrentStep} onFinalize={handleFinalize}/>
+            <FinalReview personalInfo={personalInfo} educations={educations} experiences={experiences} isFinalized={completedSteps.Finalisation} onEdit={setCurrentStep} onFinalize={handleFinalize} onPrint={handlePrint}/>
             <CVPreview personalInfo={personalInfo} educations={educations} experiences={experiences}/>
           </div>
         ) : null}
