@@ -34,6 +34,9 @@ function createEmptyExperience() {
     id: crypto.randomUUID(),
     company: '',
     job: '',
+    startDate: '',
+    endDate: '',
+    responsibilities: '',
   };
 }
 
@@ -107,7 +110,7 @@ function App() {
   }
 
   function handleAddExperience() {
-    setExperiences([...experiences, createEmptyExperience()]);
+    setExperiences((previousExperiences) => [...previousExperiences, createEmptyExperience(),]);
   }
 
   function handleDeleteExperience(experienceId) {

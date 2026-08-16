@@ -6,7 +6,7 @@ export function ExperienceForm({experiences, onChange, onAdd, onDelete, onSubmit
 
                 {experiences.map((experience, index) => (
 
-                    <fieldset className="education-card" key={experiences.id}>
+                    <fieldset className="education-card" key={experience.id}>
 
                         <legend>Experience {index + 1}</legend>
     
@@ -20,6 +20,21 @@ export function ExperienceForm({experiences, onChange, onAdd, onDelete, onSubmit
                         <div className="form-field form-field-full">
                             <label htmlFor={`${experience.id}-job`}>Job</label>
                             <input id={`${experience.id}-job`} name="job" type="text" value={experience.job} onChange={(event) => onChange(experience.id, event)} placeholder="Product Manager"/>
+                        </div>
+
+                        <div className="form-field form-field-full">
+                            <label htmlFor={`${experience.id}-startDate`}>Start Date</label>
+                            <input id={`${experience.id}-startDate`} name="startDate" type="month" value={experience.startDate} onChange={(event) => onChange(experience.id, event)}/>
+                        </div>
+
+                        <div className="form-field form-field-full">
+                            <label htmlFor={`${experience.id}-endDate`}>End Date</label>
+                            <input id={`${experience.id}-endDate`} name="endDate" type="month" value={experience.endDate} onChange={(event) => onChange(experience.id, event)}/>
+                        </div>
+
+                        <div className="form-field form-field-full">
+                            <label htmlFor={`${experience.id}-responsibilities`}>Responsabilités</label>
+                            <textarea id={`${experience.id}-responsibilities`} name="responsibilities" value={experience.responsibilities} onChange={(event) => onChange(experience.id, event)} placeholder="Décrivez vos missions et réalisations principales" rows="5"/>
                         </div>
 
                     </fieldset>
