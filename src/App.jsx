@@ -159,7 +159,10 @@ function App() {
         ) : null}
 
         {currentStep === 3 ? (
-          <FinalReview personalInfo={personalInfo} educations={educations} experiences={experiences} isFinalized={completedSteps.Finalisation} onEdit={setCurrentStep} onFinalize={handleFinalize}/>
+          <div className='finalization-layout'>
+            <FinalReview personalInfo={personalInfo} educations={educations} experiences={experiences} isFinalized={completedSteps.Finalisation} onEdit={setCurrentStep} onFinalize={handleFinalize}/>
+            <CVPreview personalInfo={personalInfo} educations={educations} experiences={experiences}/>
+          </div>
         ) : null}
 
       </section>

@@ -488,3 +488,182 @@
     width: 100%;
   }
 }
+
+.finalization-layout {
+  display: grid;
+  align-items: start;
+  grid-template-columns:
+    minmax(0, 1.05fr)
+    minmax(360px, 0.95fr);
+  gap: 28px;
+  margin-top: 28px;
+}
+
+.finalization-layout .final-review {
+  margin-top: 0;
+}
+
+.cv-preview-panel {
+  position: sticky;
+  top: 24px;
+  min-width: 0;
+}
+
+.cv-preview-label {
+  margin: 0 0 10px;
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.cv-page {
+  width: 100%;
+  min-height: 600px;
+  aspect-ratio: 210 / 297;
+  overflow: hidden;
+  padding: clamp(28px, 4vw, 48px);
+  color: #26302a;
+  background: white;
+  box-shadow: 0 20px 50px rgb(39 48 41 / 16%);
+}
+
+.cv-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  border-bottom: 2px solid #26302a;
+  padding-bottom: 24px;
+}
+
+.cv-document-label {
+  margin: 0 0 10px;
+  color: var(--primary);
+  font-size: 0.55rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.cv-name {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+}
+
+.cv-job-title {
+  margin: 12px 0 0;
+  color: var(--primary);
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.cv-contact {
+  display: flex;
+  flex: 0 1 150px;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.6rem;
+  font-style: normal;
+  line-height: 1.4;
+  text-align: right;
+}
+
+.cv-contact a {
+  color: inherit;
+  overflow-wrap: anywhere;
+  text-decoration: none;
+}
+
+.cv-section {
+  padding: 22px 0;
+}
+
+.cv-section + .cv-section {
+  border-top: 1px solid #dce1d9;
+}
+
+.cv-section-title {
+  margin: 0 0 14px;
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.cv-profile-text {
+  margin: 0;
+  color: #525d55;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 0.7rem;
+  line-height: 1.65;
+}
+
+.cv-entry-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cv-entry-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.cv-entry h4 {
+  margin: 0 0 3px;
+  font-size: 0.7rem;
+}
+
+.cv-entry p {
+  margin: 0;
+  color: #667068;
+  font-size: 0.62rem;
+}
+
+.cv-entry-heading span {
+  flex-shrink: 0;
+  color: #667068;
+  font-size: 0.55rem;
+  text-align: right;
+}
+
+.cv-entry .cv-responsibilities {
+  margin-top: 8px;
+  line-height: 1.55;
+  white-space: pre-line;
+}
+
+@media (max-width: 900px) {
+  .finalization-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .cv-preview-panel {
+    position: static;
+    width: min(100%, 620px);
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 500px) {
+  .cv-page {
+    min-height: 520px;
+    padding: 26px 20px;
+  }
+
+  .cv-header {
+    flex-direction: column;
+  }
+
+  .cv-contact {
+    text-align: left;
+  }
+}
