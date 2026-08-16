@@ -1,4 +1,4 @@
-export function EducationForm({educations, onChange, onAdd, onSubmit})
+export function EducationForm({educations, onChange, onAdd, onDelete, onSubmit})
 {
     return (
         <form className="form-grid" onSubmit={onSubmit}>
@@ -9,24 +9,28 @@ export function EducationForm({educations, onChange, onAdd, onSubmit})
                         
                         <legend>Formation {index + 1}</legend>
 
+                        <button className="delete-button" type="button" onClick={() => onDelete(education.id)} aria-label={`Supprimer la formation ${index + 1}`}>
+                            Supprimer
+                        </button>
+
                         <div className="form-field form-field-full">
                             <label htmlFor={`${education.id}-school`}>Etablissement</label>
-                            <input id={`${education.id}-school`} name="school" type="text" value={educations.school} onChange={(event) => onChange(education.id, event)} placeholder="ESCP Business School"/>
+                            <input id={`${education.id}-school`} name="school" type="text" value={education.school} onChange={(event) => onChange(education.id, event)} placeholder="ESCP Business School"/>
                         </div>
 
                         <div className="form-field form-field-full">
                             <label htmlFor={`${education.id}-degree`}>Diplôme ou formation</label>
-                            <input id={`${education.id}-degree`} name="degree" type="text" value={educations.degree} onChange={(event) => onChange(education.id, event)} placeholder="Master in Management"/>
+                            <input id={`${education.id}-degree`} name="degree" type="text" value={education.degree} onChange={(event) => onChange(education.id, event)} placeholder="Master in Management"/>
                         </div>
 
                         <div className="form-field">
                             <label htmlFor={`${education.id}-startDate`}>Date de début</label>
-                            <input id={`${education.id}-startDate`} name="startDate" type="month" value={educations.startDate} onChange={(event) => onChange(education.id, event)} />
+                            <input id={`${education.id}-startDate`} name="startDate" type="month" value={education.startDate} onChange={(event) => onChange(education.id, event)} />
                         </div>
 
                         <div className="form-field">
                             <label htmlFor={`${education.id}-endDate`}>Date de fin</label>
-                            <input id={`${education.id}-endDate`} name="endDate" type="month" value={educations.endDate} onChange={(event) => onChange(education.id, event)} />
+                            <input id={`${education.id}-endDate`} name="endDate" type="month" value={education.endDate} onChange={(event) => onChange(education.id, event)} />
                         </div>
 
                     </fieldset>

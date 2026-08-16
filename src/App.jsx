@@ -83,6 +83,12 @@ function App() {
     setCurrentStep(2);
   }
 
+  function handleDeleteEducation(educationId) {
+    setEducations((previousEducations) => previousEducations.filter(
+      (education) => education.id !== educationId,
+    ),
+    )}
+
   return (
     <main className="app">
       <header className='page-header'>
@@ -102,7 +108,7 @@ function App() {
         ) : null}
 
         {currentStep === 1 ? (
-          <EducationForm educations={educations} onChange={handleEducationChange} onAdd={handleAddEducation} onSubmit={handleEducationSubmit}/>
+          <EducationForm educations={educations} onChange={handleEducationChange} onAdd={handleAddEducation} onDelete={handleDeleteEducation} onSubmit={handleEducationSubmit}/>
         ) : null}
 
         {currentStep > 1 && (
