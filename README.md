@@ -10,12 +10,11 @@ lesson.
 
 ## Live Demo
 
-Deployment is coming soon on Vercel.
+[View the live application](https://cv-generator-adrienrouland-cmyks-projects.vercel.app)
 
-[View the live application](https://YOUR-VERCEL-PROJECT.vercel.app)
-
-Replace this placeholder with the actual Vercel deployment URL after the first
-deployment.
+> The deployment is currently protected by Vercel Authentication. Public access
+> must be enabled in the Vercel project settings for the demo to be accessible
+> without signing in.
 
 ## Features
 
@@ -162,7 +161,7 @@ This project focuses on the React concepts introduced by The Odin Project:
 - Improve validation and error messages
 - Add optional profile pictures
 - Support additional languages
-- Deploy the application to Vercel
+- Make the Vercel deployment publicly accessible
 
 ## Author
 
